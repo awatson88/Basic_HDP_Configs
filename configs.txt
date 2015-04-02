@@ -1,0 +1,26 @@
+python hdp-config-util.py -c 32 -m 128 -d 10 -k False
+ Using cores=32 memory=128GB disks=10 hbase=False
+ Profile: cores=32 memory=106496MB reserved=24GB usableMem=104GB disks=10
+ Num Container=18
+ Container Ram=5120MB
+ Used Ram=90GB
+ Unused Ram=24GB
+ ***** mapred-site.xml *****
+ mapreduce.map.memory.mb=5120
+ mapreduce.map.java.opts=-Xmx4096m
+ mapreduce.reduce.memory.mb=5120
+ mapreduce.reduce.java.opts=-Xmx4096m
+ mapreduce.task.io.sort.mb=1792
+ ***** yarn-site.xml *****
+ yarn.scheduler.minimum-allocation-mb=5120
+ yarn.scheduler.maximum-allocation-mb=92160
+ yarn.nodemanager.resource.memory-mb=92160
+ yarn.app.mapreduce.am.resource.mb=5120
+ yarn.app.mapreduce.am.command-opts=-Xmx4096m
+ ***** tez-site.xml *****
+ tez.am.resource.memory.mb=5120
+ tez.am.java.opts=-Xmx4096m
+ ***** hive-site.xml *****
+ hive.tez.container.size=5120
+ hive.tez.java.opts=-Xmx4096m
+ hive.auto.convert.join.noconditionaltask.size=1342177000
