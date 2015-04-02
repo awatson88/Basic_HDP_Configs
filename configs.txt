@@ -24,3 +24,22 @@ python hdp-config-util.py -c 32 -m 128 -d 10 -k False
  hive.tez.container.size=5120
  hive.tez.java.opts=-Xmx4096m
  hive.auto.convert.join.noconditionaltask.size=1342177000
+
+Additional Settings for Hive/Tez Optimization 
+ 
+ Tez Settings
+tez.am.container.reuse.enabled=true
+tez.am.container.session.delay-allocation-millis=900000
+tez.session.am.dag.submit.timeout.secs=900
+
+Hive Settings
+hive.execution.engine=tez
+hive.server2.tez.initialize.default.sessions=true
+hive.server2.enable.doAs=false
+hive.support.concurrency=true
+hive.enforce.bucketing=true
+hive.exec.dynamic.partition.mode=nonstrict
+hive.optimize.ppd=true
+
+Vectorization
+hive.vectorized.execution.enabled = true
