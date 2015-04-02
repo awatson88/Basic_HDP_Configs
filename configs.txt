@@ -43,3 +43,14 @@ hive.optimize.ppd=true
 
 Vectorization
 hive.vectorized.execution.enabled = true
+
+Initial Terasort Optimization Configs
+Compression is king, bump up CPU usage to reduce writes and network I/o
+-D mapreduce.map.output.compress=true
+-D mapreduce.map.output.compress.codec=org.apache.hadoop.io.compress.SnappyCodec
+# of Reducers to equal the number of containers
+-D mapred.reduce.tasks=90
+Slow roll the reduces so they don’t begin to take up resources too soon
+-D mapreduce.job.reduce.slowstart.completedmaps=0.4 
+With spill set to 95% we will read a larger part of the file into the buffer without pausing to spill
+-D mapreduce.map.sort.spill.percent=0.95 
